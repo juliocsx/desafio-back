@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import database from '../database/connection';
+import TaskTag from './taskTag.model';
 
 const Task = database.define('task', {
     task_id: {
@@ -28,5 +29,10 @@ const Task = database.define('task', {
 }, {
     underscored: true 
 })
+
+Task.hasMany(TaskTag, {
+    foreignKey: "task_id"
+})
+
 
 export default Task

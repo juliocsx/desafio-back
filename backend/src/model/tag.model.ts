@@ -1,5 +1,7 @@
 import Sequelize from 'sequelize';
 import database from '../database/connection';
+import TaskTag from './taskTag.model';
+
 
 const Tag = database.define('tag', {
     tag_id: {
@@ -18,5 +20,10 @@ const Tag = database.define('tag', {
         allowNull: false
     }
 })
+
+Tag.hasMany(TaskTag, {
+    foreignKey: "tag_id"
+})
+
 
 export default Tag

@@ -4,8 +4,8 @@ import { Request, Response } from "express";
 async function editTag(req: Request, res: Response) {
     try {
         const body = req.body
-        const { tag_name, tag_color } = body
-        const findTag = await Tag.findOne({ where: { tag_id: body.tag_id } })
+        const { tag_name, tag_color, user_id } = body
+        const findTag = await Tag.findOne({ where: { tag_id: body.tag_id, user_id } })
         if (!findTag) {
             res.status(404).send({ msg: "Tag not found" })
         } else {

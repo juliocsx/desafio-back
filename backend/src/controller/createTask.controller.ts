@@ -4,12 +4,13 @@ import { Request, Response } from "express";
 async function createTask(req: Request, res: Response) {
     try {
         const body = req.body
-        const { task_title, task_status, task_priority, task_description } = body
+        const { task_title, task_status, task_priority, task_description, user_id } = body
         const createTask = await Task.create({
             task_title,
             task_status,
             task_priority,
-            task_description
+            task_description,
+            user_id
         })
         res.status(201).send(createTask)
     } catch (error) {

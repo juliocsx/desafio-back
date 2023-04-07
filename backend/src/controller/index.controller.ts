@@ -1,3 +1,6 @@
+import createUser from "./createUser.controller";
+import loginUser from "./loginUser.controller"
+
 import createTask from "./createTask.controller";
 import getAllTasks from "./getAllTasks.controller";
 import getTasksByTitle from "./getTasksByTitle.controller";
@@ -15,6 +18,9 @@ import getAllRelationshipsTaskTag from "./getAllRelationshipsTaskTag.controller"
 import deleteRelationshipTaskTag from "./deleteRelationshipTaskTag.controller";
 
 export default {
+  createUser,
+  loginUser,
+
   createTask,
   getAllTasks,
   getTasksByTitle,

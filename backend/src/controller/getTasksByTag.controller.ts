@@ -3,8 +3,9 @@ import Task from "../model/task.model"
 import { Request, Response } from "express";
 
 async function getTasksByTag(req: Request, res: Response) {
-    try {     
-        const { tag_id } = req.body;
+    try {    
+        const body = req.body 
+        const { tag_id, user_id } = body;
         const tasks = await Task.findAll({
           include: {
             model: TaskTag,
@@ -12,6 +13,7 @@ async function getTasksByTag(req: Request, res: Response) {
               tag_id,
             },
           },
+          where: { user_id }
         });
         res.status(200).json({ tasks });
     } catch (error) {

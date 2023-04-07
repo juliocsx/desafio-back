@@ -4,8 +4,8 @@ import { Request, Response } from "express";
 async function editTask(req: Request, res: Response) {
     try {
         const body = req.body
-        const { task_title, task_status, task_priority, task_description } = body
-        const findTask = await Task.findOne({ where: { task_id: body.task_id } })
+        const { task_title, task_status, task_priority, task_description, user_id } = body
+        const findTask = await Task.findOne({ where: { task_id: body.task_id, user_id } })
         if (!findTask) {
             res.status(404).send({ msg: "Task not found" })
         } else {
